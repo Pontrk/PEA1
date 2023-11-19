@@ -8,11 +8,11 @@ void Brute_Force::getFromMatrix(Adjacency_Matrix& adjacencyMatrix){
     data = adjacencyMatrix.getMatrix();
 }
 
-vector<int> Brute_Force::findBestPath(int startNode) {//znalezienie najlepszej sciezki z wyznaczonym wierzcholkiem startowym
+vector<int> Brute_Force::findBestPath(int startNode) {
     vector<int> nodes(data.size());
     nodes[0]=startNode;
     int j=0;
-    for (int i = 1; i < data.size(); i++) {//workaround aby ulozyc wierzcholki w wektorze w odpowiedniej kolejnosci(startowy wierzchowlek z indeksem 0)
+    for (int i = 1; i < data.size(); i++) {
         if(j!=startNode)
             nodes[i] = j;
         else {
@@ -39,7 +39,7 @@ vector<int> Brute_Force::findBestPath(int startNode) {//znalezienie najlepszej s
     return best_path;
 }
 vector<int> Brute_Force::findBestPathAll() {
-    time_t endOfTime = time(NULL) + 120;
+    time_t futur = time(NULL) + 120;
     vector<int> best_path;
     int best_cost = INT_MAX;
     vector<int> nodes(data.size());
@@ -48,10 +48,10 @@ vector<int> Brute_Force::findBestPathAll() {
     do {
         int current_cost = calculatePathCost(nodes); // Oblicz koszt bieżącej ścieżki
         if (current_cost < best_cost) {
-            best_path = nodes; // Aktualizuj najlepszą ścieżkę oraz koszt
+            best_path = nodes; // Aktualizuj najlepszą ścieżkę
             best_cost = current_cost;
         }
-        if(time(NULL)>endOfTime){
+        if(time(NULL)>futur){
             cout<<"przekroczono limit czasu"<<endl;
             return best_path;
         }

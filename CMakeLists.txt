@@ -9,4 +9,6 @@ add_executable(pea1 main.cpp
         adjacency_matrix.h
         brute_force.cpp
         brute_force.h
+        held_karp.cpp
+        held_karp.h
 )
